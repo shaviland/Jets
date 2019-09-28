@@ -1,0 +1,4 @@
+Cargo, Big Bubba, 540, 3150 , 295000000
+Fighter, Reality Knife, 864, 5340, 534000000
+Fighter, Vorpal Blade, 970, 7295, 768000000
+JetImpl, Purple People Eater, 687, 430000000

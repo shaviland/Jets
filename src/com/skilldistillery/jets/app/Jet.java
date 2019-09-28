@@ -1,4 +1,4 @@
-package com.skilldistillery.jets;
+package com.skilldistillery.jets.app;
 
 public abstract class Jet {
 	
@@ -11,19 +11,27 @@ public abstract class Jet {
 	
 	//C O N S T R U C T O R S 
 	
+
 	public Jet() {
 
 	}
 
-	public Jet(String model, double speed, int range, long price) {
+	public Jet( String model, double speed, int range, long price) {
 		super();
+		
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Jet [model=%s, speed=%s, range=%s, price=%s]", model, speed, range, price);
+	}
 	//M E T H O  D S
+
+
 
 	public String getModel() {
 		return model;

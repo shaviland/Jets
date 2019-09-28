@@ -1,0 +1,5 @@
+CargoPlane, Big Bubba, 540, 3150, 295000000
+CargoPlane, Fat Cat, 672, 4180, 358000000
+FighterJet, Reality Knife, 864, 5340, 534000000
+FighterJet, Vorpal Blade, 970, 7295, 768000000
+JetImpl, Purple People Eater, 687, 6658, 430000000
