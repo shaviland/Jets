@@ -70,9 +70,10 @@ public class JetsApplication {
 	}
 
 	public void printJets(List<Jet> jetLists) {
+		int i = 1;
 		for (Jet printJet : jetList) {
-
-			System.out.println(printJet);
+			System.out.println(i++ + ": " + printJet);
+			
 		}
 
 	}
@@ -176,6 +177,7 @@ public class JetsApplication {
 	private List<Jet> removeJet(List<Jet> jetList) {
 
 		System.out.println("Which Jet would you like to remove? 1 - " + jetList.size());
+		printJets(jetList);
 		int remove = kb.nextInt();
 
 		jetList.remove(remove - 1);

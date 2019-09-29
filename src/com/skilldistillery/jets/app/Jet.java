@@ -27,7 +27,7 @@ public abstract class Jet {
 	
 	@Override
 	public String toString() {
-		return String.format("Jet [model: %s, speed: %s, range: %s, price: %s]", model, speed, range, price);
+		return String.format("Jet [model: %s, speed: %smph, range: %smi, price: $%s]", model, speed, range, price);
 	}
 	//M E T H O  D S
 
