@@ -9,7 +9,7 @@ public class JetsApplication {
 
 	public static void main(String[] args) {
 		JetsApplication ja = new JetsApplication();
-		
+
 		ja.launch();
 		kb.close();
 
@@ -57,6 +57,7 @@ public class JetsApplication {
 			addNewJet(airField);
 			break;
 		case 8:
+			removeJet(jetList);
 			break;
 		case 9:
 			break;
@@ -65,6 +66,14 @@ public class JetsApplication {
 
 		}
 		return false;
+	}
+
+	public void printJets(List<Jet> jetLists) {
+		for (Jet printJet : jetList) {
+
+			System.out.println(printJet);
+		}
+
 	}
 
 	private void jetsFly(AirField airField) {
@@ -128,10 +137,11 @@ public class JetsApplication {
 		}
 
 	}
+
 	private List<Jet> addNewJet(AirField airField) {
-		
+
 		Jet nj = new JetImpl();
-		
+
 		System.out.print("Enter model name: ");
 		String model = kb.next();
 		kb.nextLine();
@@ -147,29 +157,18 @@ public class JetsApplication {
 		nj.setPrice(Long.parseLong(price));
 		jetList.add(nj);
 		return jetList;
-		
-
-		
-		
 
 	}
-	public void printJets(List<Jet> jetLists) {
-		for (Jet printJet : jetList) {
-			
-			System.out.println(printJet);
-		}
+	
+	private List<Jet> removeJet(List<Jet> jetList){
+		
+		System.out.println("Which Jet would you like to remove? 1 - " + jetList.size() );
+		int remove = kb.nextInt();
+		
+		jetList.remove(remove - 1);
+		
+		return jetList;
 		
 	}
-//	public List<Jet> addJet(Jet[] nj) {
-//		
-//		Jet newJet = new JetImpl();
-//	
-//		jetList.add(newJet);
-//		
-//		
-//		
-//		return jetList;
-//		
-//	}
 
 }
