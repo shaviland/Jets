@@ -79,11 +79,6 @@ public class AirField {
 		}
 		return result;
 	}
-	public void printJets() {
-		for (Jet printJet : jets) {
-			
-			System.out.println(printJet);
-		}
-		
-	}
+
+
 }

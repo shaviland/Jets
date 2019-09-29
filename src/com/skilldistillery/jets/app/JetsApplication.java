@@ -3,13 +3,13 @@ package com.skilldistillery.jets.app;
 import java.util.*;
 
 public class JetsApplication {
-	private AirField airField;
+	private AirField airField = new AirField(null);
 	private static Scanner kb = new Scanner(System.in);
-//	private List<Jet> jetList = new ArrayList<>(airField.getJets());
+	private List<Jet> jetList = new ArrayList<>(airField.getJets());
 
 	public static void main(String[] args) {
 		JetsApplication ja = new JetsApplication();
-
+		
 		ja.launch();
 		kb.close();
 
@@ -33,10 +33,10 @@ public class JetsApplication {
 	}
 
 	private boolean menuChoice(int selection) {
-		AirField airField = new AirField(null);
+//		AirField airField = new AirField(null);
 		switch (selection) {
 		case 1:
-			airField.printJets();
+			printJets(jetList);
 			break;
 		case 2:
 			jetsFly(airField);
@@ -54,7 +54,7 @@ public class JetsApplication {
 			dogFight(airField);
 			break;
 		case 7:
-//			addNewJet(airField);
+			addNewJet(airField);
 			break;
 		case 8:
 			break;
@@ -128,27 +128,48 @@ public class JetsApplication {
 		}
 
 	}
-//	private void addNewJet(AirField airField) {
-//		
-//		JetImpl nj = new JetImpl();
-//		
-//		System.out.print("Enter model name: ");
-//		String model = kb.nextLine();
-//		kb.nextLine();
-//		nj.setModel(model);
-//		System.out.print("Enter speed in mph: ");
-//		String speed = kb.nextLine();
-//		nj.setSpeed(Double.parseDouble(speed));
-//		System.out.print("Enter range in miles: ");
-//		String range = kb.nextLine();
-//		nj.setRange(Integer.parseInt(range));
-//		System.out.print("Enter price: ");
-//		String price = kb.nextLine();
-//		nj.setPrice(Long.parseLong(price));
-//		
-//		airField.addJet(nj);
-//		
-//		
+	private List<Jet> addNewJet(AirField airField) {
+		
+		Jet nj = new JetImpl();
+		
+		System.out.print("Enter model name: ");
+		String model = kb.next();
+		kb.nextLine();
+		nj.setModel(model);
+		System.out.print("Enter speed in mph: ");
+		String speed = kb.nextLine();
+		nj.setSpeed(Double.parseDouble(speed));
+		System.out.print("Enter range in miles: ");
+		String range = kb.nextLine();
+		nj.setRange(Integer.parseInt(range));
+		System.out.print("Enter price: ");
+		String price = kb.nextLine();
+		nj.setPrice(Long.parseLong(price));
+		jetList.add(nj);
+		return jetList;
+		
 
+		
+		
+
+	}
+	public void printJets(List<Jet> jetLists) {
+		for (Jet printJet : jetList) {
+			
+			System.out.println(printJet);
+		}
+		
+	}
+//	public List<Jet> addJet(Jet[] nj) {
+//		
+//		Jet newJet = new JetImpl();
+//	
+//		jetList.add(newJet);
+//		
+//		
+//		
+//		return jetList;
+//		
 //	}
+
 }
