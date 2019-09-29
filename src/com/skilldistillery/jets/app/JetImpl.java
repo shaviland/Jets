@@ -14,7 +14,9 @@ public class JetImpl extends Jet {
 	@Override
 	public void fly() {
 
-		System.out.println( super.getModel() + " is cruising in the air.");
+		System.out.println(super.getModel() + " is cruising in the air.");
+		System.out.println(super.toString());
+		super.flyLength();
 		
 	}
 

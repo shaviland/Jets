@@ -18,6 +18,9 @@ public class CargoPlane extends Jet implements CargoCarrier {
 	public void fly() {
 
 		System.out.println(super.getModel() + " is flying like an air manatee.");
+		System.out.println(super.toString());
+		super.flyLength();
+		
 
 	}
 

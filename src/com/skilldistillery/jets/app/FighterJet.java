@@ -15,8 +15,10 @@ public class FighterJet extends Jet implements CombatReady {
 
 	@Override
 	public void fly() {
-
+		
 		System.out.println(super.getModel() + " is doing a barrel roll." );
+		System.out.println(super.toString());
+		super.flyLength();
 		
 	}
 
@@ -28,9 +30,9 @@ public class FighterJet extends Jet implements CombatReady {
 
 	@Override
 	public void fight() {
-		
 		System.out.println("Firing missle...");
 		System.out.println("Firing onbaord guns.");
+		
 		
 	}
 

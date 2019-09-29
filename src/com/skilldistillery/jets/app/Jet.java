@@ -27,7 +27,7 @@ public abstract class Jet {
 	
 	@Override
 	public String toString() {
-		return String.format("Jet [model=%s, speed=%s, range=%s, price=%s]", model, speed, range, price);
+		return String.format("Jet [model: %s, speed: %s, range: %s, price: %s]", model, speed, range, price);
 	}
 	//M E T H O  D S
 
@@ -67,5 +67,11 @@ public abstract class Jet {
 	
 	public abstract void fly();
 	public abstract double getSpeedInMach();
+	
+	public void flyLength() {
+		double flyLength = this.getRange() / this.getSpeed();
+		System.out.printf("Is flying for " + "%.2f" + " hours.", flyLength);
+		
+	}
 	
 }

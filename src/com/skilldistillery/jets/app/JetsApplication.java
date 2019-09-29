@@ -12,7 +12,7 @@ public class JetsApplication {
 
 		ja.launch();
 		kb.close();
-		
+
 	}
 
 	private void launch() {
@@ -24,33 +24,51 @@ public class JetsApplication {
 	private void displayUserMenu() {
 		boolean quit = false;
 		do {
-		System.out.println("************* Menu *************\n" + "1. List fleet\n" + "2. Fly all jets\n" + "3. View fastest jet\n" + "4. View jet with longest range\n"
-				+ "5. Load all Cargo Jets\n" + "6. Dogfight!\n" + "7. Add a jet to Fleet\n" + "8. Remove a jet from Fleet\n"
-				+ "9. Quit");
-		int selection = kb.nextInt();
-		quit = menuChoice(selection);
-		}while(!quit);
+			System.out.println("************* Menu *************\n" + "1. List fleet\n" + "2. Fly all jets\n"
+					+ "3. View fastest jet\n" + "4. View jet with longest range\n" + "5. Load all Cargo Jets\n"
+					+ "6. Dogfight!\n" + "7. Add a jet to Fleet\n" + "8. Remove a jet from Fleet\n" + "9. Quit");
+			int selection = kb.nextInt();
+			quit = menuChoice(selection);
+		} while (!quit);
 	}
 
 	private boolean menuChoice(int selection) {
 		AirField airField = new AirField();
-		switch(selection) {
+		switch (selection) {
 		case 1:
 			airField.printJets();
 			break;
 		case 2:
-			
+
 			for (Jet jetsFly : airField.getJets()) {
-				if(jetsFly != null) {
-				jetsFly.fly();
+				if (jetsFly != null) {
+					jetsFly.fly();
 				}
-				
+
 			}
-			
+
 			break;
 		case 3:
+			Jet fastestJet = null;
+			for (Jet jetsFast : airField.getJets()) {
+				if (jetsFast != null) {
+				if (fastestJet == null || fastestJet.getRange() < jetsFast.getRange()) {
+					fastestJet = jetsFast;
+				}
+				}
+			}
+			System.out.println(fastestJet.toString());
 			break;
 		case 4:
+			Jet longestJet = null;
+			for (Jet jetsLong : airField.getJets()) {
+				if (jetsLong != null) {
+					if (longestJet == null || longestJet.getSpeed() < jetsLong.getSpeed()) {
+						longestJet = jetsLong;
+					}
+				}
+			}
+			System.out.println(longestJet.toString());
 			break;
 		case 5:
 			break;
@@ -64,7 +82,7 @@ public class JetsApplication {
 			break;
 		default:
 			System.out.println("That is not a valid selection. Please select again.");
-		
+
 		}
 		return false;
 	}
