@@ -57,6 +57,7 @@ public abstract class Jet {
 		this.range = range;
 	}
 
+
 	public long getPrice() {
 		return price;
 	}
@@ -64,7 +65,7 @@ public abstract class Jet {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
+
 	public abstract void fly();
 	public abstract double getSpeedInMach();
 	
@@ -73,5 +74,6 @@ public abstract class Jet {
 		System.out.printf("Is flying for " + "%.2f" + " hours.", flyLength);
 		
 	}
+
 	
 }

@@ -30,8 +30,11 @@ public class FighterJet extends Jet implements CombatReady {
 
 	@Override
 	public void fight() {
-		System.out.println("Firing missle...");
-		System.out.println("Firing onbaord guns.");
+		if(Math.random() > .5) {
+		System.out.println(this.getModel() + ": Firing missle...");
+		}else {
+		System.out.println(this.getModel() + ": Firing onbaord guns.");
+		}
 		
 		
 	}

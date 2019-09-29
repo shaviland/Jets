@@ -1,11 +1,11 @@
 package com.skilldistillery.jets.app;
 
-import java.io.*;
 import java.util.*;
 
 public class JetsApplication {
 	private AirField airField;
 	private static Scanner kb = new Scanner(System.in);
+//	private List<Jet> jetList = new ArrayList<>(airField.getJets());
 
 	public static void main(String[] args) {
 		JetsApplication ja = new JetsApplication();
@@ -24,7 +24,7 @@ public class JetsApplication {
 	private void displayUserMenu() {
 		boolean quit = false;
 		do {
-			System.out.println("************* Menu *************\n" + "1. List fleet\n" + "2. Fly all jets\n"
+			System.out.println("\n************* Menu *************\n" + "1. List fleet\n" + "2. Fly all jets\n"
 					+ "3. View fastest jet\n" + "4. View jet with longest range\n" + "5. Load all Cargo Jets\n"
 					+ "6. Dogfight!\n" + "7. Add a jet to Fleet\n" + "8. Remove a jet from Fleet\n" + "9. Quit");
 			int selection = kb.nextInt();
@@ -33,48 +33,28 @@ public class JetsApplication {
 	}
 
 	private boolean menuChoice(int selection) {
-		AirField airField = new AirField();
+		AirField airField = new AirField(null);
 		switch (selection) {
 		case 1:
 			airField.printJets();
 			break;
 		case 2:
-
-			for (Jet jetsFly : airField.getJets()) {
-				if (jetsFly != null) {
-					jetsFly.fly();
-				}
-
-			}
-
+			jetsFly(airField);
 			break;
 		case 3:
-			Jet fastestJet = null;
-			for (Jet jetsFast : airField.getJets()) {
-				if (jetsFast != null) {
-				if (fastestJet == null || fastestJet.getRange() < jetsFast.getRange()) {
-					fastestJet = jetsFast;
-				}
-				}
-			}
-			System.out.println(fastestJet.toString());
+			fastestJet(airField);
 			break;
 		case 4:
-			Jet longestJet = null;
-			for (Jet jetsLong : airField.getJets()) {
-				if (jetsLong != null) {
-					if (longestJet == null || longestJet.getSpeed() < jetsLong.getSpeed()) {
-						longestJet = jetsLong;
-					}
-				}
-			}
-			System.out.println(longestJet.toString());
+			longestJet(airField);
 			break;
 		case 5:
+			loadAllCargoJets(airField);
 			break;
 		case 6:
+			dogFight(airField);
 			break;
 		case 7:
+//			addNewJet(airField);
 			break;
 		case 8:
 			break;
@@ -87,4 +67,88 @@ public class JetsApplication {
 		return false;
 	}
 
+	private void jetsFly(AirField airField) {
+
+		for (Jet jetsFly : airField.getJets()) {
+			if (jetsFly != null) {
+				jetsFly.fly();
+			}
+
+		}
+
+	}
+
+	private void fastestJet(AirField airField) {
+
+		Jet fastestJet = null;
+		for (Jet jetsFast : airField.getJets()) {
+			if (jetsFast != null) {
+				if (fastestJet == null || fastestJet.getRange() < jetsFast.getRange()) {
+					fastestJet = jetsFast;
+				}
+			}
+		}
+		System.out.println(fastestJet.toString());
+
+	}
+
+	private void longestJet(AirField airField) {
+
+		Jet longestJet = null;
+		for (Jet jetsLong : airField.getJets()) {
+			if (jetsLong != null) {
+				if (longestJet == null || longestJet.getSpeed() < jetsLong.getSpeed()) {
+					longestJet = jetsLong;
+				}
+			}
+		}
+		System.out.println(longestJet.toString());
+	}
+
+	public void loadAllCargoJets(AirField airField) {
+
+		for (Jet cargoSearch : airField.getJets()) {
+			if (cargoSearch instanceof CargoPlane) {
+				CargoPlane cargoLoad = (CargoPlane) cargoSearch;
+				cargoLoad.loadCargo();
+			}
+
+		}
+
+	}
+
+	private void dogFight(AirField airField) {
+
+		for (Jet dogFight : airField.getJets()) {
+			if (dogFight instanceof FighterJet) {
+				FighterJet cargoLoad = (FighterJet) dogFight;
+				cargoLoad.fight();
+			}
+
+		}
+
+	}
+//	private void addNewJet(AirField airField) {
+//		
+//		JetImpl nj = new JetImpl();
+//		
+//		System.out.print("Enter model name: ");
+//		String model = kb.nextLine();
+//		kb.nextLine();
+//		nj.setModel(model);
+//		System.out.print("Enter speed in mph: ");
+//		String speed = kb.nextLine();
+//		nj.setSpeed(Double.parseDouble(speed));
+//		System.out.print("Enter range in miles: ");
+//		String range = kb.nextLine();
+//		nj.setRange(Integer.parseInt(range));
+//		System.out.print("Enter price: ");
+//		String price = kb.nextLine();
+//		nj.setPrice(Long.parseLong(price));
+//		
+//		airField.addJet(nj);
+//		
+//		
+
+//	}
 }
