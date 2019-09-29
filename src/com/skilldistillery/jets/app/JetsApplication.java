@@ -39,22 +39,22 @@ public class JetsApplication {
 			printJets(jetList);
 			break;
 		case 2:
-			jetsFly(airField);
+			jetsFly(jetList);
 			break;
 		case 3:
-			fastestJet(airField);
+			fastestJet(jetList);
 			break;
 		case 4:
-			longestJet(airField);
+			longestJet(jetList);
 			break;
 		case 5:
-			loadAllCargoJets(airField);
+			loadAllCargoJets(jetList);
 			break;
 		case 6:
-			dogFight(airField);
+			dogFight(jetList);
 			break;
 		case 7:
-			addNewJet(airField);
+			addNewJet(jetList);
 			break;
 		case 8:
 			removeJet(jetList);
@@ -77,9 +77,9 @@ public class JetsApplication {
 
 	}
 
-	private void jetsFly(AirField airField) {
+	private void jetsFly(List<Jet> jetList) {
 
-		for (Jet jetsFly : airField.getJets()) {
+		for (Jet jetsFly : jetList) {
 			if (jetsFly != null) {
 				jetsFly.fly();
 			}
@@ -88,10 +88,10 @@ public class JetsApplication {
 
 	}
 
-	private void fastestJet(AirField airField) {
+	private void fastestJet(List<Jet> jetList) {
 
 		Jet fastestJet = null;
-		for (Jet jetsFast : airField.getJets()) {
+		for (Jet jetsFast : jetList) {
 			if (jetsFast != null) {
 				if (fastestJet == null || fastestJet.getRange() < jetsFast.getRange()) {
 					fastestJet = jetsFast;
@@ -102,10 +102,10 @@ public class JetsApplication {
 
 	}
 
-	private void longestJet(AirField airField) {
+	private void longestJet(List<Jet> jetList) {
 
 		Jet longestJet = null;
-		for (Jet jetsLong : airField.getJets()) {
+		for (Jet jetsLong : jetList) {
 			if (jetsLong != null) {
 				if (longestJet == null || longestJet.getSpeed() < jetsLong.getSpeed()) {
 					longestJet = jetsLong;
@@ -115,9 +115,9 @@ public class JetsApplication {
 		System.out.println(longestJet.toString());
 	}
 
-	public void loadAllCargoJets(AirField airField) {
+	public void loadAllCargoJets(List<Jet> jetList) {
 
-		for (Jet cargoSearch : airField.getJets()) {
+		for (Jet cargoSearch : jetList) {
 			if (cargoSearch instanceof CargoPlane) {
 				CargoPlane cargoLoad = (CargoPlane) cargoSearch;
 				cargoLoad.loadCargo();
@@ -127,9 +127,9 @@ public class JetsApplication {
 
 	}
 
-	private void dogFight(AirField airField) {
+	private void dogFight(List<Jet> jetList) {
 
-		for (Jet dogFight : airField.getJets()) {
+		for (Jet dogFight : jetList) {
 			if (dogFight instanceof FighterJet) {
 				FighterJet cargoLoad = (FighterJet) dogFight;
 				cargoLoad.fight();
@@ -139,13 +139,14 @@ public class JetsApplication {
 
 	}
 
-	private List<Jet> addNewJet(AirField airField) {
+	private List<Jet> addNewJet(List<Jet> jetList) {
 
-		Jet nj = new JetImpl();
-
+		System.out.println("Enter plane type. (Fighter, Cargo, Passanger");
+		String type = kb.next();
+		Jet nj = planeType(type);
 		System.out.print("Enter model name: ");
-		String model = kb.next();
 		kb.nextLine();
+		String model = kb.nextLine();
 		nj.setModel(model);
 		System.out.print("Enter speed in mph: ");
 		String speed = kb.nextLine();
@@ -160,16 +161,27 @@ public class JetsApplication {
 		return jetList;
 
 	}
-	
-	private List<Jet> removeJet(List<Jet> jetList){
-		
-		System.out.println("Which Jet would you like to remove? 1 - " + jetList.size() );
+
+	private Jet planeType(String type) {
+		if (type.equalsIgnoreCase("fighter")) {
+			return new FighterJet();
+		} else if (type.equalsIgnoreCase("cargo")) {
+			return new CargoPlane();
+		} else {
+			return new JetImpl();
+		}
+
+	}
+
+	private List<Jet> removeJet(List<Jet> jetList) {
+
+		System.out.println("Which Jet would you like to remove? 1 - " + jetList.size());
 		int remove = kb.nextInt();
-		
+
 		jetList.remove(remove - 1);
-		
+
 		return jetList;
-		
+
 	}
 
 }
