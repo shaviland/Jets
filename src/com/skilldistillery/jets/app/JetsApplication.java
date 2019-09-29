@@ -60,7 +60,8 @@ public class JetsApplication {
 			removeJet(jetList);
 			break;
 		case 9:
-			break;
+			System.out.println("GoodBye.");
+			return true;
 		default:
 			System.out.println("That is not a valid selection. Please select again.");
 
