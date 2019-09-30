@@ -1,37 +1,43 @@
 package com.skilldistillery.jets.app;
 
 public abstract class Jet {
-	
-	//F I E L D S
-	
+
+	// F I E L D S
+	private String type;
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
-	
-	//C O N S T R U C T O R S 
-	
+
+	// C O N S T R U C T O R S
 
 	public Jet() {
 
 	}
 
-	public Jet( String model, double speed, int range, long price) {
+	public Jet(String type, String model, double speed, int range, long price) {
 		super();
-		
+		this.type = type;
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("Jet [model: %s, speed: %smph, range: %smi, price: $%s]", model, speed, range, price);
+		return String.format("Jet [type=%s, model=%s, speed=%s, range=%s, price=%s]", type, model, speed, range, price);
 	}
-	//M E T H O  D S
 
+	// M E T H O D S
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getModel() {
 		return model;
@@ -57,7 +63,6 @@ public abstract class Jet {
 		this.range = range;
 	}
 
-
 	public long getPrice() {
 		return price;
 	}
@@ -67,13 +72,13 @@ public abstract class Jet {
 	}
 
 	public abstract void fly();
+
 	public abstract double getSpeedInMach();
-	
+
 	public void flyLength() {
 		double flyLength = this.getRange() / this.getSpeed();
 		System.out.printf("Is flying for " + "%.2f" + " hours.", flyLength);
-		
+
 	}
 
-	
 }

@@ -43,27 +43,27 @@ public class AirField {
 			String jetList;
 			String[] jetSplit;
 			while ((jetList = reader.readLine()) != null) {
-
+				
 				jetSplit = jetList.split(", ");
-//				String type = jetSplit[0];
+				String type = jetSplit[0];
 				String model = jetSplit[1];
 				double speed = Double.parseDouble(jetSplit[2]);
 				int range = Integer.parseInt(jetSplit[3]);
 				long price = Long.parseLong(jetSplit[4]);
 
 				switch (jetSplit[0]) {
-				case "CargoPlane": {
-					Jet cp = new CargoPlane(model, speed, range, price);
+				case "cp": {
+					Jet cp = new CargoPlane(type, model, speed, range, price);
 					result.add(cp);
 					break;
 				}
-				case "FighterJet": {
-					Jet fj = new FighterJet(model, speed, range, price);
+				case "fj": {
+					Jet fj = new FighterJet(type, model, speed, range, price);
 					result.add(fj);
 					break;
 				}
-				case "JetImpl": {
-					Jet ji = new JetImpl(model, speed, range, price);
+				case "ji": {
+					Jet ji = new JetImpl(type, model, speed, range, price);
 					result.add(ji);
 					break;
 				}

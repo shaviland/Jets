@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.io.*;
 import java.util.*;
 
 public class JetsApplication {
@@ -61,6 +62,7 @@ public class JetsApplication {
 			break;
 		case 9:
 			System.out.println("GoodBye.");
+			replaceList(jetList);
 			return true;
 		default:
 			System.out.println("That is not a valid selection. Please select again.");
@@ -73,7 +75,7 @@ public class JetsApplication {
 		int i = 1;
 		for (Jet printJet : jetList) {
 			System.out.println(i++ + ": " + printJet);
-			
+
 		}
 
 	}
@@ -140,38 +142,42 @@ public class JetsApplication {
 
 	}
 
-	private List<Jet> addNewJet(List<Jet> jetList) {
+	private void addNewJet(List<Jet>jetList) {
 
-		System.out.println("Enter plane type. (Fighter, Cargo, Passanger");
-		String type = kb.next();
-		Jet nj = planeType(type);
+		System.out.println("Enter plane type. (1: Fighter, 2: Cargo, 3: Passanger (1-3)");
+		int jetType = kb.nextInt();
 		System.out.print("Enter model name: ");
 		kb.nextLine();
 		String model = kb.nextLine();
-		nj.setModel(model);
 		System.out.print("Enter speed in mph: ");
-		String speed = kb.nextLine();
-		nj.setSpeed(Double.parseDouble(speed));
+		double speed = kb.nextDouble();
 		System.out.print("Enter range in miles: ");
-		String range = kb.nextLine();
-		nj.setRange(Integer.parseInt(range));
+		int range = kb.nextInt();
 		System.out.print("Enter price: ");
-		String price = kb.nextLine();
-		nj.setPrice(Long.parseLong(price));
-		jetList.add(nj);
-		return jetList;
+		long price = kb.nextLong();
+		List<Jet> nj = planeType(jetList, jetType, model, speed, range, price);
 
 	}
 
-	private Jet planeType(String type) {
-		if (type.equalsIgnoreCase("fighter")) {
-			return new FighterJet();
-		} else if (type.equalsIgnoreCase("cargo")) {
-			return new CargoPlane();
-		} else {
-			return new JetImpl();
+	private List<Jet> planeType(List<Jet> jetList, int jetType, String model, double speed, int range, long price) {
+		switch (jetType) {
+		case 1:
+			String type = "fj";
+			Jet nj = new FighterJet(type, model, speed, range, price);
+			jetList.add(nj);
+			break;
+		case 2:
+			String type2 = "cp";
+			Jet nj2 = new CargoPlane(type2, model, speed, range, price);
+			jetList.add(nj2);
+			break;
+		case 3:
+			String type3 = "ji";
+			Jet nj3 = new JetImpl(type3, model, speed, range, price);
+			jetList.add(nj3);
+			break;
 		}
-
+		return jetList;
 	}
 
 	private List<Jet> removeJet(List<Jet> jetList) {
@@ -184,6 +190,22 @@ public class JetsApplication {
 
 		return jetList;
 
+	}
+
+	public void replaceList(List<Jet> jetList) {
+		try {
+
+			FileWriter fw = new FileWriter("jets.txt");
+			PrintWriter pw = new PrintWriter(fw);
+			for (Jet jetReplace : jetList) {
+
+				pw.println(jetReplace.getType() + ", " + jetReplace.getModel() + ", " + jetReplace.getSpeed() + ", "
+						+ jetReplace.getRange() + ", " + jetReplace.getPrice());
+			}
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
