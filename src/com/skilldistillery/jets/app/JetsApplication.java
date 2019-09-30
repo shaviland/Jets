@@ -134,8 +134,8 @@ public class JetsApplication {
 
 		for (Jet dogFight : jetList) {
 			if (dogFight instanceof FighterJet) {
-				FighterJet cargoLoad = (FighterJet) dogFight;
-				cargoLoad.fight();
+				FighterJet fightingJets = (FighterJet) dogFight;
+				fightingJets.fight();
 			}
 
 		}
@@ -144,7 +144,7 @@ public class JetsApplication {
 
 	private void addNewJet(List<Jet>jetList) {
 
-		System.out.println("Enter plane type. (1: Fighter, 2: Cargo, 3: Passanger (1-3)");
+		System.out.println("Enter plane type.\n1: Fighter\n2: Cargo\n3: Passanger\n  ");
 		int jetType = kb.nextInt();
 		System.out.print("Enter model name: ");
 		kb.nextLine();

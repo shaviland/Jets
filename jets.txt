@@ -3,3 +3,4 @@ cargo, Fat Cat, 672.0, 4180, 358000000
 fighter, Reality Knife, 864.0, 5340, 534000000
 fighter, Vorpal Blade, 970.0, 7295, 768000000
 passanger, Purple People Eater, 687.0, 6658, 430000000
+fighter, Dropkick Murphy, 879.0, 6579, 987000000
