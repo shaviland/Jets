@@ -3,4 +3,3 @@ cp, Fat Cat, 672.0, 4180, 358000000
 fj, Reality Knife, 864.0, 5340, 534000000
 fj, Vorpal Blade, 970.0, 7295, 768000000
 ji, Purple People Eater, 687.0, 6658, 430000000
-fj, lsadkfj, 678.0, 9874, 628934794

@@ -155,7 +155,7 @@ public class JetsApplication {
 		int range = kb.nextInt();
 		System.out.print("Enter price: ");
 		long price = kb.nextLong();
-		List<Jet> nj = planeType(jetList, jetType, model, speed, range, price);
+		planeType(jetList, jetType, model, speed, range, price);
 
 	}
 
