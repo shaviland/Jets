@@ -26,7 +26,8 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return String.format("Jet [type: %s, model: %s, speed: %s mph, range: %s miles, price: $%s]", type, model, speed, range, price);
+		return String.format("Jet [type: %s, model: %s, speed: %s mph, range: %s miles, price: $%s]", type, model,
+				speed, range, price);
 	}
 
 	// M E T H O D S
@@ -72,8 +73,6 @@ public abstract class Jet {
 	}
 
 	public abstract void fly();
-
-	public abstract double getSpeedInMach();
 
 	public void flyLength() {
 		double flyLength = this.getRange() / this.getSpeed();

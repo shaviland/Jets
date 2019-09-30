@@ -1,10 +1,6 @@
 package com.skilldistillery.jets.app;
 
 public class CargoPlane extends Jet implements CargoCarrier {
-	
-
-
-
 
 	public CargoPlane() {
 		super();
@@ -23,14 +19,7 @@ public class CargoPlane extends Jet implements CargoCarrier {
 		System.out.println(super.getModel() + " is flying like an air manatee.");
 		System.out.println(super.toString());
 		super.flyLength();
-		
 
-	}
-
-	@Override
-	public double getSpeedInMach() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

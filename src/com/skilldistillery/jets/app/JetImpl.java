@@ -18,13 +18,7 @@ public class JetImpl extends Jet {
 		System.out.println(super.getModel() + " is cruising in the air.");
 		System.out.println(super.toString());
 		super.flyLength();
-		
-	}
 
-	@Override
-	public double getSpeedInMach() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
