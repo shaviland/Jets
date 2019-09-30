@@ -162,17 +162,17 @@ public class JetsApplication {
 	private List<Jet> planeType(List<Jet> jetList, int jetType, String model, double speed, int range, long price) {
 		switch (jetType) {
 		case 1:
-			String type = "fj";
+			String type = "fighter";
 			Jet nj = new FighterJet(type, model, speed, range, price);
 			jetList.add(nj);
 			break;
 		case 2:
-			String type2 = "cp";
+			String type2 = "cargo";
 			Jet nj2 = new CargoPlane(type2, model, speed, range, price);
 			jetList.add(nj2);
 			break;
 		case 3:
-			String type3 = "ji";
+			String type3 = "passanger";
 			Jet nj3 = new JetImpl(type3, model, speed, range, price);
 			jetList.add(nj3);
 			break;

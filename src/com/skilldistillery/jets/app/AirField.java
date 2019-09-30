@@ -52,17 +52,17 @@ public class AirField {
 				long price = Long.parseLong(jetSplit[4]);
 
 				switch (jetSplit[0]) {
-				case "cp": {
+				case "cargo": {
 					Jet cp = new CargoPlane(type, model, speed, range, price);
 					result.add(cp);
 					break;
 				}
-				case "fj": {
+				case "fighter": {
 					Jet fj = new FighterJet(type, model, speed, range, price);
 					result.add(fj);
 					break;
 				}
-				case "ji": {
+				case "passanger": {
 					Jet ji = new JetImpl(type, model, speed, range, price);
 					result.add(ji);
 					break;

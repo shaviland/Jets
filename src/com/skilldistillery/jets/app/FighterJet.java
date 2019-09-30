@@ -11,7 +11,7 @@ public class FighterJet extends Jet implements CombatReady {
 	}
 
 	public FighterJet(String type, String model, double speed, int range, long price) {
-		super(type = "fj", model, speed, range, price);
+		super(type = "fighter", model, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 

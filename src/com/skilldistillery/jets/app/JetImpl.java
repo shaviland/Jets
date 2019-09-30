@@ -8,7 +8,7 @@ public class JetImpl extends Jet {
 	}
 
 	public JetImpl(String type, String model, double speed, int range, long price) {
-		super(type = "ji", model, speed, range, price);
+		super(type = "passanger", model, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 
